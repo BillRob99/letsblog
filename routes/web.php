@@ -14,11 +14,3 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('/yo', function () {
-    return 'yo';
-});
-
-Route::get('/animals', function () {
-    return '<head>sheep init</head>';
-});
