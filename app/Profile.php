@@ -10,6 +10,11 @@ class Profile extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    public function groups()
+    {
+        return $this->belongsToMany('App\Group');
+    }
     public function posts()
     {
         return $this->hasMany('App\Post');
