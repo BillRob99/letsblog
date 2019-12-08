@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            //ID of the profile that the user is linked to.
             $table->rememberToken();
             $table->timestamps();
         });
