@@ -16,4 +16,6 @@ Route::get('/', function () {
 });
 
 Route::get('/profiles', 'ProfileController@index');
+
+Route::get('/profiles/{id}', 'ProfileController@show');
     
