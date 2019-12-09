@@ -12,9 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('layouts.profile');
+    return view('layouts.app');
 });
 
-Route::get('/profiles', function() {
-    return view('layouts.profile');
-});
+Route::get('/profiles', 'ProfileController@index');
+    
