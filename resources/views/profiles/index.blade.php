@@ -7,7 +7,7 @@
     <p>The current Profiles are:</p>
     <ul>
         @foreach ($profiles as $profile)
-            <li>{{ $profile -> name }}</li>
+            <li><a href="/profiles/{{ $profile->id }}" >{{ $profile -> name }}</li>
         @endforeach
     </ul>
 
