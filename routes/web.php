@@ -12,5 +12,9 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('layouts.profile');
+});
+
+Route::get('/profiles', function() {
+    return view('layouts.profile');
 });
