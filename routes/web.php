@@ -17,5 +17,6 @@ Route::get('/', function () {
 
 Route::get('/profiles', 'ProfileController@index');
 
-Route::get('/profiles/{id}', 'ProfileController@show');
+Route::get('/profiles/{id}', 'ProfileController@show')
+    ->name('profiles.show');
     
