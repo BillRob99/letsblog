@@ -8,7 +8,7 @@ use Faker\Generator as Faker;
 $factory->define(Profile::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
-        'user_id' => 'id',
+        'user_id' => $faker->unique()->numberBetween(1,10),
         'bio' => $faker->realText()
     ];
 });
