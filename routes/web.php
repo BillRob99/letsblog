@@ -15,8 +15,11 @@ Route::get('/', function () {
     return view('layouts.app');
 });
 
-Route::get('/profiles', 'ProfileController@index');
+Route::get('profiles', 'ProfileController@index')->name('profiles.index');
 
-Route::get('/profiles/{id}', 'ProfileController@show')
-    ->name('profiles.show');
+Route::get('profiles/create', 'ProfileController@create')->name('profiles.create');
+
+Route::post('profiles', 'ProfileController@store')->name('profiles.store');
+
+Route::get('profiles/{id}', 'ProfileController@show')->name('profiles.show');
     
