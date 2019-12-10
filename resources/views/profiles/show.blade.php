@@ -5,6 +5,8 @@
 @section('content')
     <ul>
         <li>Name: {{$profile->name}}</li>
+        <li>Gender: {{$profile->gender}}</li>
+        <li>Bio: {{$profile->bio}}</li>
         <li>Email: {{$profile->user->email}}
 
        
