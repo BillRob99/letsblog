@@ -16,4 +16,12 @@
             <li>Name: {{$group->name}}</li>
         @endforeach
     </ul>
+
+    <form method="POST"
+        action="{{ route('profiles.destroy', ['id' => $profile->id]) }}">
+        
+        @csrf
+        @method('DELETE')
+        <button type="submit">Delete</button>
+    </form>
 @endsection

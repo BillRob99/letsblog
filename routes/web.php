@@ -22,4 +22,6 @@ Route::get('profiles/create', 'ProfileController@create')->name('profiles.create
 Route::post('profiles', 'ProfileController@store')->name('profiles.store');
 
 Route::get('profiles/{id}', 'ProfileController@show')->name('profiles.show');
+
+Route::delete('profiles/{id}', 'ProfileController@destroy')->name('profiles.destroy');
     
