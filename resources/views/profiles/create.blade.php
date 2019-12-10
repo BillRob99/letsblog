@@ -11,8 +11,16 @@
         <p>Name: <input type="text" name="name"
             value="{{ old('name') }}"></p>
 
-        <p>Gender: <input type="text" name="gender"
-            value="{{ old('gender') }}"></p>
+        <p>Gender: 
+            <select name="gender">
+                <option value="Male">
+                    Male
+                </option>
+                <option value="Female">
+                    Female
+                </option>
+            </select>
+        </p>
 
         <p>Bio: <input type="text" name="bio"
             value="{{ old('bio') }}"></p>

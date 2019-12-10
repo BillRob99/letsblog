@@ -39,7 +39,7 @@ class ProfileController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|max:50',
-            'gender' => 'required',
+            'gender' => 'nullable',
             'bio' => 'nullable|max:255',
             'user_id' => 'required|integer',
         ]);
