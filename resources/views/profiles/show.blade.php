@@ -18,7 +18,7 @@
     </ul>
 
     <form method="POST"
-        action="{{ route('profiles.destroy', ['id' => $profile->id]) }}">
+        action="{{ route('profiles.destroy', ['profile' => $profile]) }}">
         
         @csrf
         @method('DELETE')
