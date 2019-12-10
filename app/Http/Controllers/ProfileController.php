@@ -37,7 +37,23 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request['name']);
+        $validatedData = $request->validate([
+            'name' => 'required|max:50',
+            'gender' => 'required',
+            'bio' => 'nullable|max:255',
+            'user_id' => 'required|integer',
+        ]);
+        
+        $a = new Profile();
+        $a->name = $validatedData['name'];
+        $a->gender = $validatedData['gender'];
+        $a->bio = $validatedData['bio'];
+        $a->user_id = $validatedData['user_id'];
+        $a->save();
+
+        session()->flash('message', 'Profile Created.');
+
+        return redirect()->route('profiles.index');
     }
 
     /**

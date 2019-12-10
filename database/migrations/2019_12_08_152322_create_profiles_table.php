@@ -18,7 +18,7 @@ class CreateProfilesTable extends Migration
             $table->string('name');
             $table->string('gender');
             $table->unsignedInteger('user_id');
-            $table->string('bio');
+            $table->string('bio')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->
