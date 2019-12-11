@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
-@section('title', $profile->name)
+@section('title', $profile->display_name)
 
 @section('content')
     <ul>
-        <li>Name: {{$profile->name}}</li>
+        <li>Name: {{$profile->display_name}}</li>
         <li>Gender: {{$profile->gender}}</li>
         <li>Bio: {{$profile->bio}}</li>
         <li>Email: {{$profile->user->email}}
