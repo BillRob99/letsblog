@@ -38,14 +38,14 @@ class ProfileController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'name' => 'required|max:50',
+            'display_name' => 'required|max:50',
             'gender' => 'nullable',
             'bio' => 'nullable|max:255',
             'user_id' => 'required|integer',
         ]);
         
         $a = new Profile();
-        $a->name = $validatedData['name'];
+        $a->display_name = $validatedData['display_name'];
         $a->gender = $validatedData['gender'];
         $a->bio = $validatedData['bio'];
         $a->user_id = $validatedData['user_id'];

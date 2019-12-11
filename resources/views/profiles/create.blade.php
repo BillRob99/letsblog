@@ -8,7 +8,7 @@
 
         @csrf
 
-        <p>Name: <input type="text" name="name"
+        <p>Name: <input type="text" name="display_name"
             value="{{ old('name') }}"></p>
 
         <p>Gender: <select name="gender">
