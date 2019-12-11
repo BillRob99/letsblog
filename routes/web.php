@@ -25,6 +25,8 @@ Route::get('profiles/{profile}', 'ProfileController@show')->name('profiles.show'
 
 Route::delete('profiles/{profile}', 'ProfileController@destroy')->name('profiles.destroy');
     
+Route::get('posts', 'PostController@index')->name("posts.index");
+
 
 Auth::routes();
 
