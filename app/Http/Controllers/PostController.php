@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Post;
 use Illuminate\Http\Request;
 
@@ -26,7 +27,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        
+        return view('posts.create');
     }
 
     /**
@@ -37,7 +39,20 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = Auth::user();
+
+        $validatedData = $request->validate([
+            'text' => 'required|max:250',
+        ]);
+        
+        $a = new Post();
+        $a->text = $validatedData['text'];
+        $a->profile_id = $user->profile->id;
+        $a->save();
+
+        session()->flash('message', 'Post Created.');
+
+        return redirect()->route('posts.index');
     }
 
     /**

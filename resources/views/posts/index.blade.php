@@ -5,11 +5,12 @@
 @section('content')
 
     @foreach($posts as $post)
-        <p>Post by: <a href="{{ route('profiles.show', ['profile' => $post->profile]) }}">
-            {{ $post->profile->display_name }}</a></p>
+        <h5>Post by: <a href="{{ route('profiles.show', ['profile' => $post->profile]) }}">
+            {{ $post->profile->display_name }}</a></h5>
+            
         <p>{{ $post->text }}</p>
         <p>Comments: {{ $post->comments->count() }} 
-        <a href="{{ route('posts.show', ['post' => $post]) }}"><input type="button" value="View Post"></p>
+        <a href="{{ route('posts.show', ['post' => $post]) }}"><input type="button" value="View Post"></a></p>
         
 
     @endforeach
