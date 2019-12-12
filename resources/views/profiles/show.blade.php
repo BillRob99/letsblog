@@ -4,12 +4,9 @@
 
 @section('content')
     <ul>
-        <li>Name: {{$profile->display_name}}</li>
-        <li>Gender: {{$profile->gender}}</li>
-        <li>Bio: {{$profile->bio}}</li>
-        <li>Email: {{$profile->user->email}}
+        <h3>{{$profile->display_name}}</h3>
+        <h6>{{$profile->bio}}</h6>
 
-       
         <h2>Groups:</h2>
 
         @foreach ($profile->groups as $group)

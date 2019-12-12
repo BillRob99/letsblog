@@ -5,9 +5,9 @@
 @section('content')
     
 
-    <h1>{{ $post->profile->display_name }}:</h1>
+    <h3>{{ $post->profile->display_name }}:</h1>
     <p>{{ $post->text }}</p>
-    <h2>Comments: </h2>
+    <h3>Comments: </h2>
 
     @foreach($post->comments as $comment)
 
