@@ -34,7 +34,7 @@ Route::post('posts', 'PostController@store')->name('posts.store');
 
 Route::get('posts/edit/{post}', 'PostController@edit')->name('posts.edit');
 
-Route::put('posts', 'PostController@update')->name('posts.update');
+Route::post('posts/{post}', 'PostController@update')->name('posts.update');
 
 Route::get('posts/{post}', 'PostController@show')->name('posts.show');
 

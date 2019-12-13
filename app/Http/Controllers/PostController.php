@@ -39,6 +39,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+       
         $user = Auth::user();
 
         $validatedData = $request->validate([
@@ -84,9 +85,22 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
-        //
+
+       
+
+        $validatedData = $request->validate([
+            'text' => 'required|max:250',
+        ]);
+        
+        $post->text = $validatedData['text'];
+
+        $post->save();
+
+        session()->flash('message', 'Post Edited.');
+
+        return redirect()->route('posts.show', ['post' => $post]);
     }
 
     /**
