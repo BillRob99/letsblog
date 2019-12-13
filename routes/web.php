@@ -33,6 +33,8 @@ Route::post('posts', 'PostController@store')->name('posts.store');
 
 Route::get('posts/{post}', 'PostController@show')->name('posts.show');
 
+Route::get('comments/{comment}', 'CommentController@show')->name('comments.show');
+
 
 Auth::routes();
 

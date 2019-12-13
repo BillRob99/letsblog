@@ -4,6 +4,8 @@
 
 @section('content')
 
+    <h4><a href="{{ route('posts.create') }}">Want to create a post? Click here!</a></h4>
+
     @foreach($posts as $post)
         <h5>Post by: <a href="{{ route('profiles.show', ['profile' => $post->profile]) }}">
             {{ $post->profile->display_name }}</a></h5>
