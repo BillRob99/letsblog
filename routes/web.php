@@ -32,7 +32,8 @@ Route::get('posts/create', 'PostController@create')->name('posts.create')
 
 Route::post('posts', 'PostController@store')->name('posts.store');
 
-Route::get('posts/edit/{post}', 'PostController@edit')->name('posts.edit');
+Route::get('posts/edit/{post}', 'PostController@edit')->name('posts.edit')
+    ->middleware('checkifposted');
 
 Route::post('posts/{post}', 'PostController@update')->name('posts.update');
 
