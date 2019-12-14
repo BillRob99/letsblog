@@ -7,6 +7,7 @@
 
     <h3>{{ $post->profile->display_name }}:</h1>
     <p>{{ $post->text }}</p>
+    <a href="{{ route('posts.edit', ['post' => $post]) }}"><input type="button" value="Edit Post"></a>
     <h3>Comments:</h2>
 
     @foreach($post->comments as $comment)

@@ -27,6 +27,6 @@ class CheckIfPosted
             } 
             
         session()->flash('message', 'You can only edit an item if you posted it.');
-        return redirect()->route('posts.index');
+        return redirect()->back();
     }
 }
