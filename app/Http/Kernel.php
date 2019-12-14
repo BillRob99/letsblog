@@ -62,6 +62,7 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'checkifposted' => \App\Http\Middleware\CheckIfPosted::class,
+        'checkifcommented' => \App\Http\Middleware\CheckIfCommented::class,
     ];
 
     /**
