@@ -13,7 +13,7 @@
     @foreach($post->comments as $comment)
 
     <p><a href="{{ route('profiles.show', ['profile' => $comment->profile]) }}">{{ $comment->profile-> display_name }}</a>: {{ $comment->text}}</p>
-    
+    <a href="{{ route('comments.edit', ['comment' => $comment]) }}"><input type="button" value="Edit Comment"></a>
     @endforeach
 
 

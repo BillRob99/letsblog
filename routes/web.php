@@ -42,6 +42,10 @@ Route::get('posts/{post}', 'PostController@show')->name('posts.show');
 Route::get('comments/create/{post}', 'CommentController@create')->name('comments.create')
     ->middleware('auth');;
 
+Route::get('comments/edit/{comment}', 'CommentController@edit')->name('comments.edit');
+
+Route::post('comments/{comment}', 'CommentController@update')->name('comments.update');
+
 Route::post('comments', 'CommentController@store')->name('comments.store')
     ->middleware('auth');;
 

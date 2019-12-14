@@ -75,9 +75,9 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Comment $comment)
     {
-        
+        return view('comments.edit', ['comment' => $comment]);
     }
 
     /**
@@ -87,9 +87,16 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Comment $comment)
     {
-        //
+        $validatedData = $request->validate([
+            'text' => 'required| max:250',
+        ]);
+        $comment->text = $validatedData['text'];
+        $comment->save();
+
+        session()->flash('message', 'Comment Edited.');
+        return redirect()->route('posts.show', ['post' => $comment->post]);
     }
 
     /**
