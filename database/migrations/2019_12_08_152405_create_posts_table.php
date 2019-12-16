@@ -17,6 +17,7 @@ class CreatePostsTable extends Migration
             $table->increments('id');
             //Textual content of the post.
             $table->string('text');
+            $table->string('image_path')->nullable();
             //ID of the profile that created the post.
             $table->unsignedInteger('profile_id');
             $table->timestamps();

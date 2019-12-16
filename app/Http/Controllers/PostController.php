@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\Post;
 use Illuminate\Http\Request;
+use Validator,Redirect,Response,File;
 
 class PostController extends Controller
 {
@@ -41,11 +42,14 @@ class PostController extends Controller
     {
        
         $user = Auth::user();
-
         $validatedData = $request->validate([
             'text' => 'required|max:250',
+            'image' => 'max:2048',
         ]);
         
+        if ($request->hasFile($validatedData['image'])) {
+            dd('Image exists!');
+         }
         $a = new Post();
         $a->text = $validatedData['text'];
         $a->profile_id = $user->profile->id;
