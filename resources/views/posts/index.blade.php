@@ -16,5 +16,5 @@
         
 
     @endforeach
-
+    {!! $posts->links() !!}
 @endsection
