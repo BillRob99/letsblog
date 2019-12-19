@@ -9,33 +9,38 @@
     <p>{{ $post->text }}</p>
     <a href="{{ route('comments.create', ['post' => $post]) }}"><input type="button" value="Add Comment"></a>
     <a href="{{ route('posts.edit', ['post' => $post]) }}"><input type="button" value="Edit Post"></a>
-    <h3>Comments:</h2>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <h3>Comments:</h3>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
-    <div class="container">
-        <table class="table table-bordered" id="laravel">
-           <thead>
-              <tr>
-                 <th>Profile</th>
-                 <th>Content</th>
-                 <th>Date Created</th>
-                 <th>Action</th>
-              </tr>
-           </thead>
-           <tbody>
-              @foreach($post->comments as $comment)
+    <div id="root">
+         <p>Test message: @{{message}} </p>
+         
+         <ul>
+            <li v-for="comment in comments">@{{ comment.text }}</li>
+         </ul>
 
-                <tr>
-                    <td><a href="{{ route('profiles.show', ['profile' => $comment->profile]) }}">
-                        {{ $comment->profile->display_name }}</a></td>
-                    <td>{{ $comment->text }}</td>
-                    <td>{{ date('d m Y', strtotime($comment->created_at)) }}</td>
-                    <td><a href="{{ route('comments.edit', ['comment' => $comment]) }}"><input type="button" value="Edit Comment"></a></td>
-                </tr>
+    </div>
 
-              @endforeach
-           </tbody>
-        </table>
-     </div>
+    <script>
+
+       var app = new Vue({
+          el: "#root",
+          data: {
+            comments: [],
+            message: "Test",
+          },
+
+          mounted() {
+             axios.get("{{ route('api.comments.index') }}")
+             .then(response => {
+                this.comments = response.data;
+             })
+             .catch(response => {
+                console.log(response);
+             })
+          },
+       });
+    </script>
 
 @endsection
