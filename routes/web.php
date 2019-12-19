@@ -52,6 +52,16 @@ Route::post('comments', 'CommentController@store')->name('comments.store')
 
 Route::get('comments/{comment}', 'CommentController@show')->name('comments.show');
 
+Route::get('groups', 'GroupController@index')->name('groups.index');
+
+Route::get('groups/create', 'GroupController@create')->name('groups.create');
+
+Route::post('groups', 'GroupController@store')->name('groups.store');
+
+Route::get('group/join/{group}', 'GroupController@join')->name('groups.join');
+
+Route::get('groups/{group}', 'GroupController@show')->name('groups.show');
+
 Route::get('api/comments/{post}', 'CommentController@apiIndex')->name('api.comments.index');
 
 Route::post('api/comments', 'CommentController@apiStore')->name('api.comments.store');
