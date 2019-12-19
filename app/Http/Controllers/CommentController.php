@@ -19,9 +19,23 @@ class CommentController extends Controller
         //
     }
 
-    public function apiIndex(){
-        $comments = Comment::all();
+    public function apiIndex(Post $post){
+        $comments = Comment::with('profile')->with('post')->where('post_id', '=', $post->id)->get();
         return $comments;
+    }
+
+    public function apiStore(Request $request){
+        $user = Auth::user();
+
+        $a = new Comment;
+        $a->text = $request['text'];
+        $a->post_id = $request['post_id'];
+        $a->profile_id = $user->profile->id;
+        $a->save();
+
+        $comment = Comment::with('profile')->where('id', '=', $a->id)->first();
+
+        return $comment;
     }
     /**
      * Show the form for creating a new resource.

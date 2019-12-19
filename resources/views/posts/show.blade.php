@@ -14,11 +14,17 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
     <div id="root">
-         <p>Test message: @{{message}} </p>
-         
+
          <ul>
-            <li v-for="comment in comments">@{{ comment.text }}</li>
+         <li v-for="comment in comments">
+            
+            @{{ comment.profile.display_name }}: @{{ comment.text }}</li>
          </ul>
+
+         <h2> Add Comment </h2>
+
+         Comment: <input type="text" id="input" v-model="newCommentContent">
+         <button @click="createComment">Create</button>
 
     </div>
 
@@ -28,11 +34,12 @@
           el: "#root",
           data: {
             comments: [],
-            message: "Test",
+            newCommentContent: '',
+            post_id: {{$post->id}},
           },
 
           mounted() {
-             axios.get("{{ route('api.comments.index') }}")
+             axios.get("{{ route('api.comments.index', ['post' => $post]) }}")
              .then(response => {
                 this.comments = response.data;
              })
@@ -40,6 +47,23 @@
                 console.log(response);
              })
           },
+
+          methods: {
+            createComment: function() {
+               axios.post("{{ route('api.comments.store') }}", {
+                  text: this.newCommentContent,
+                  post_id: this.post_id
+               })
+               .then(response => {
+                  
+                  this.comments.push(response.data);
+                  this.newCommentContent = '';
+               })
+               .catch(response => {
+                  console.log(response);
+               })
+            }
+          }
        });
     </script>
 

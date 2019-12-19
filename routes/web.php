@@ -52,7 +52,9 @@ Route::post('comments', 'CommentController@store')->name('comments.store')
 
 Route::get('comments/{comment}', 'CommentController@show')->name('comments.show');
 
-Route::get('api/comments', 'CommentController@apiIndex')->name('api.comments.index');
+Route::get('api/comments/{post}', 'CommentController@apiIndex')->name('api.comments.index');
+
+Route::post('api/comments', 'CommentController@apiStore')->name('api.comments.store');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
