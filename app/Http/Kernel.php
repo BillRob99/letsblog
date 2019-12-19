@@ -63,6 +63,7 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'checkifposted' => \App\Http\Middleware\CheckIfPosted::class,
         'checkifcommented' => \App\Http\Middleware\CheckIfCommented::class,
+        'checkifhasprofile' => \App\Http\Middleware\CheckIfHasProfile::class,
     ];
 
     /**

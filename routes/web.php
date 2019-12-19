@@ -17,6 +17,9 @@ Route::get('/', function () {
 
 Route::get('profiles', 'ProfileController@index')->name('profiles.index');
 
+Route::get('profiles/myprofile', 'ProfileController@myprofile')->name('profiles.myprofile')
+    ->middleware('auth')->middleware('checkifhasprofile');
+
 Route::get('profiles/create', 'ProfileController@create')->name('profiles.create');
 
 Route::post('profiles', 'ProfileController@store')->name('profiles.store');

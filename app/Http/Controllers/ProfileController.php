@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Profile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
@@ -37,18 +38,19 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
+        $user = Auth::user();
+
         $validatedData = $request->validate([
             'display_name' => 'required|max:50',
             'gender' => 'nullable',
             'bio' => 'nullable|max:255',
-            'user_id' => 'required|integer',
         ]);
         
         $a = new Profile();
         $a->display_name = $validatedData['display_name'];
         $a->gender = $validatedData['gender'];
         $a->bio = $validatedData['bio'];
-        $a->user_id = $validatedData['user_id'];
+        $a->user_id = $user->id;
         $a->save();
 
         session()->flash('message', 'Profile Created.');
@@ -101,5 +103,12 @@ class ProfileController extends Controller
         $profile->delete();
 
         return redirect()->route('profiles.index')->with('message', 'Profile was deleted.');
+    }
+
+    public function myprofile()
+    {
+        $user = Auth::user();
+
+        return view('profiles.show', ['profile' => $user->profile]);
     }
 }
