@@ -28,9 +28,6 @@
         <p>Bio: <input type="text" name="bio"
             value="{{ old('bio') }}"></p>
 
-        <p>User ID: <input type="number" name="user_id"
-            value="{{ old('user_id') }}"></p>
-
         <input type="submit" value="Submit">
 
         <a href="{{ route('profiles.index') }}">Cancel</a>

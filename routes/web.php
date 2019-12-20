@@ -31,7 +31,7 @@ Route::delete('profiles/{profile}', 'ProfileController@destroy')->name('profiles
 Route::get('posts', 'PostController@index')->name('posts.index');
 
 Route::get('posts/create', 'PostController@create')->name('posts.create')
-    ->middleware('auth');
+    ->middleware('auth')->middleware('checkifhasprofile');
 
 Route::post('posts', 'PostController@store')->name('posts.store');
 
@@ -43,15 +43,15 @@ Route::post('posts/{post}', 'PostController@update')->name('posts.update');
 Route::get('posts/{post}', 'PostController@show')->name('posts.show');
 
 Route::get('comments/create/{post}', 'CommentController@create')->name('comments.create')
-    ->middleware('auth');;
+    ->middleware('auth')->middleware('checkifhasprofile');
 
 Route::get('comments/edit/{comment}', 'CommentController@edit')->name('comments.edit')
-    ->middleware('auth')->middleware('checkifcommented');
+    ->middleware('auth')->middleware('checkifhasprofile')->middleware('checkifcommented');
 
 Route::post('comments/{comment}', 'CommentController@update')->name('comments.update');
 
 Route::post('comments', 'CommentController@store')->name('comments.store')
-    ->middleware('auth');;
+    ->middleware('auth')->middleware('checkifhasprofile');
 
 Route::get('comments/{comment}', 'CommentController@show')->name('comments.show');
 
