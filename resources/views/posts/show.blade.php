@@ -19,6 +19,7 @@
          <li v-for="comment in comments">
             
             @{{ comment.profile.display_name }}: @{{ comment.text }}</li>
+            
          </ul>
 
          <h2> Add Comment </h2>
